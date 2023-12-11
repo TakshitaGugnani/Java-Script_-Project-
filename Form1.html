@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #box {
+            width: 50%;
+            height: 400px;
+            border: 2px solid black;
+            margin: auto;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input {
+            width: 70%;
+            padding: 10px;
+            font-size: 22px;
+            margin: 10px 0px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .gap {
+            margin: 10px 0px;
+        }
+    </style>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+
+<body>
+    <div id="box">
+        <h2>Registration here</h2>
+        <input class="gap" type="text" id="txtName" placeholder="Enter Name="> <br>
+        <input class="gap" type="text" id="txtPhone" placeholder="Enter Phone="> <br>
+        <input class="gap" type="text" id="txtAddress" placeholder="Enter Address="> <br>
+        <br><br>
+        <button onclick="save()">Save</button>
+        <button onclick="show()">Show</button>
+        <button onclick="mdel()">MultiDelete</button>
+    </div>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+                <!-- <th> <input id="chk" onclick="setreset()" type="checkbox"> Select</th> -->
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Operation</th>
+            </thead>
+            <tbody id="bdy">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        show()
+        function reset() {
+            document.getElementById('txtName').value = ''
+            document.getElementById('txtPhone').value = ''
+            document.getElementById('txtAddress').value = ''
+
+        }
+        function setreset() {
+            if (document.getElementById('chk').checked == true) {
+                rows = document.getElementById('bdy').getElementsByTagName('tr')
+                i = 0
+                while (i <= rows.length - 1) {
+                    cells = rows[i].getElementsByTagName('td')
+                    check = cells[0].getElementsByTagName('input')
+                    check[0].checked = true
+                    i = i + 1
+                }
+            }
+            else {
+                rows = document.getElementById('bdy').getElementsByTagName('tr')
+                i = 0
+                while (i <= rows.length - 1) {
+                    cells = rows[i].getElementsByTagName('td')
+                    check = cells[0].getElementsByTagName('input')
+                    check[0].checked = false
+                    i = i + 1
+                }
+            }
+
+        }
+
+            function show()
+            {
+                document.getElementById('bdy').innerHTML=''
+                arrName= JSON.parse(localStorage.getItem('first'))
+             arrPhone= JSON.parse(localStorage.getItem('second'))
+             arrAddress= JSON.parse(localStorage.getItem('third'))
+
+             i=0
+             while(i<=arrName.length-1)
+             {
+                row=document.createElement('tr')
+                
+                cell1=document.createElement('td')
+                cell2=document.createElement('td')
+                cell3=document.createElement('td')
+                cell4=document.createElement('td')
+
+                   cell1.innerHTML =arrName[i]
+                   cell2.innerHTML=arrPhone[i]
+                   cell3.innerHTML=arrAddress[i]
+
+                   btnDelete=document.createElement('button')
+                   btnDelete.innerHTML="delete"
+                   cell4.append(btnDelete)
+                   
+                   btnEdit=document.createElement('button')
+                   btnEdit.innerHTML="Edit"
+                   cell4.append(btnEdit)
+
+                   row.append(cell1)
+                   row.append(cell2)
+                   row.append(cell3)
+                   row.append(cell4)
+
+                   document.getElementById('bdy').append(row)
+                // console.log(arrName[i]+"-"+arrPhone[i]+"-"+arrAddress[i])
+                i=i+1
+             }
+            }
+        function mdel() {
+            rows = document.getElementById('bdy').getElementsByTagName('tr')
+            i = 0
+            while (i <= rows.length - 1) {
+                cells = rows[i].getElementsByTagName('td')
+                check = cells[0].getElementsByTagName('input')
+                if (check[0].checked == true) {
+                    rows[i].style.display = "none"
+                }
+                i = i + 1
+            }
+            document.getElementById('chk').checked = false
+        }
+        var arrName = []
+        var arrPhone = []
+        var arrAddress = []
+        function save() {
+             arrName= JSON.parse(localStorage.getItem('first'))
+             arrPhone= JSON.parse(localStorage.getItem('second'))
+             arrAddress= JSON.parse(localStorage.getItem('third'))
+
+             if(arrName==null)
+             {
+                arrName=[]
+                arrPhone=[]
+                arrAddress=[]
+            }
+              
+            name = document.getElementById('txtName').value
+            phone = document.getElementById('txtPhone').value
+            address = document.getElementById('txtAddress').value
+
+            arrName.push(name)
+            arrPhone.push(phone)
+            arrAddress.push(address)
+            
+            localStorage.setItem('first',JSON.stringify(arrName))
+            localStorage.setItem('second',JSON.stringify(arrPhone))
+            localStorage.setItem('third',JSON.stringify(arrAddress))
+                show()
+        }
+        function save2() {
+            name = document.getElementById('txtName').value
+            phone = document.getElementById('txtPhone').value
+            address = document.getElementById('txtAddress').value
+
+            if (name == "" || phone == "" || address == "") {
+                alert('plz enter the field ')
+                return
+            }
+            row = document.createElement('tr')
+
+            cell = document.createElement('td')
+            cell1 = document.createElement('td')
+            cell2 = document.createElement('td')
+            cell3 = document.createElement('td')
+            cell4 = document.createElement('td')
+
+            cell1.innerHTML = name
+            cell2.innerHTML = phone
+            cell3.innerHTML = address
+
+            // for first cell
+            inpCheck = document.createElement('input')
+            inpCheck.type = "checkbox"
+            cell.append(inpCheck)
+
+            // for last cell
+            btnDelete = document.createElement('button')
+            btnDelete.innerHTML = "delete"
+            btnDelete.setAttribute("onclick", "del(this)")
+
+            btnEdit = document.createElement('button')
+            btnEdit.innerHTML = "Edit"
+            btnEdit.setAttribute("onclick", "edit(this)")
+            cell4.append(btnDelete)
+            cell4.append(btnEdit)
+
+            row.append(cell)
+            row.append(cell1)
+            row.append(cell2)
+            row.append(cell3)
+            row.append(cell4)
+
+            document.getElementById('bdy').append(row)
+            reset()
+
+        }
+
+        function del(OButton) {
+            parentDiv = OButton.parentNode
+            outerDiv = parentDiv.parentNode
+            outerDiv.style.display = "none"
+        }
+    </script>
+</body>
+
+</html>

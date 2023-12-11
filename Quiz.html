@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box
+        {
+            width: 50%;
+            margin: auto;
+            height: 200px;
+            border: 3px solid black;
+            background-color: pink;
+            border-radius: 10px;
+            text-align: center;
+            textcolor
+        }
+        h2{
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+      <div id="box">
+       <h1 id ="Question Answer"></h1>
+        <h2 id="question"></h2>
+        <input type="radio" > <span id="i"></span>  <br>
+        <input type="radio" > <span id="ii"></span> <br>
+        <input type="radio" >  <span id="iii"></span>  <br>
+        <input type="radio" > <span id="iv"></span>  <br>
+
+
+      </div>
+    <button onclick="show()">Next</button>
+      <script>
+          var Ques=[{
+                q:"What is HTML",
+                a:"Hypte text markup",
+                b:"ypr text mark",
+                c:"hyper text mark-up language",
+                d:'hyper',
+                result:"c"
+          },{
+                q:"What is HTML1",
+                a:"Hypte text markup",
+                b:"ypr text mark",
+                c:"hyper text mark-up language",
+                d:'hyper',
+                result:"c"
+          },{
+                q:"What is HTML2",
+                a:"Hypte text markup",
+                b:"ypr text mark",
+                c:"hyper text mark-up language",
+                d:'hyper',
+                result:"c"
+          }]
+          
+          var no=0
+          function show()
+          {
+            
+             document.getElementById('question').innerHTML="Ques="+Ques[no].q
+
+             document.getElementById('i').innerHTML=Ques[no].a
+             document.getElementById('ii').innerHTML=Ques[no].b
+             document.getElementById('iii').innerHTML=Ques[no].c
+             document.getElementById('iv').innerHTML=Ques[no].d
+                // console.log(Ques[no].q)  
+                no=no+1
+          }
+      </script>
+</body>
+</html>

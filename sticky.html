@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="bdy">
+    <input type="text" id="txtColor" placeholder="enter color">  <br> <br>
+    <button onclick="create()">Create</button> <br><br>
+
+    <script>
+        function create() {
+           color= document.getElementById('txtColor').value
+            box = document.createElement('div')
+            box.style.height = "200px"
+            box.style.width = "25%"
+            box.style.margin = "4%"
+            box.style.float = "left"
+            box.style.border="2px solid black"
+            box.style.backgroundColor=color
+
+            innerBox = document.createElement('div')
+            innerBox.style.height="20%"
+            innerBox.style.backgroundColor="gray"
+            
+            image=document.createElement('img')
+            image.style.height="100%"
+            image.style.width="20%"
+            image.style.float="right"
+            image.src="images/clode.png"
+            image.setAttribute("onclick","del(this)");
+
+            image2=document.createElement('img')
+            image2.style.height="100%"
+            image2.style.width="20%"
+            image2.style.float="left"
+            image2.src="images/plus.png"
+            image2.setAttribute("onclick","create()");
+
+            innerBox.append(image2)
+            innerBox.append(image)
+
+            box.append(innerBox)
+            document.getElementById('bdy').append(box)
+        }   
+        function del(OButton)
+        {
+             parentDiv=OButton.parentNode
+             outerDiv=parentDiv.parentNode
+             outerDiv.style.display="none"
+        }
+    </script>
+</body>
+
+</html>

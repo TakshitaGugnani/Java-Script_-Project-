@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function A(callback)
+        {
+            setTimeout(function(){
+                console.log('We r in function A')
+                callback()
+            },1000)
+           
+        }
+        function B()
+        {
+            console.log('We r in function B')
+        }
+        function C()
+        {
+            console.log('We r in fuction C')
+        }
+
+        A(C)  // Argument (function) callback
+        
+        // Asynchronization handle, synchronization
+        // 1) callback
+        // 2) promises
+        // 3) async await
+    </script>
+</body>
+</html>

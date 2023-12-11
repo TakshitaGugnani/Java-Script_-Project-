@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input onkeyup="set()" type="text" id="txtData"> <br><br>
+    <button onclick="set()">set</button>
+    <script>
+        function set() {
+            data=document.getElementById('txtData').value
+            var arr = ["annu", "ramu", "shri", "vinay", "manju"]
+            newArr = arr.filter((name) => {
+                return name.match(data)
+            })
+            console.log(newArr)
+        }
+        // var arr=[11,22,33,44,55,66,77,88,99,100]
+        //  var newArr=   arr.map((item)=>{
+        //              return item%2==0
+        //      })
+        // var newArr=   arr.filter((item)=>{
+        //              return item%2==1
+        //      })
+
+    </script>
+</body>
+
+</html>

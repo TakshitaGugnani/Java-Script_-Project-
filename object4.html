@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="txtName" placeholder="Enter Name="> <br>
+    <input type="text" id="txtPhone" placeholder="Enter Phone="> <br>
+    <input type="text" id="txtAddress" placeholder="Enter Address="> <br>
+    <button onclick="save()">Save</button>
+    <script>
+        var all={
+            about:function(){
+                console.log(`My Name is=${this.Name} and My Phone is=${this.Phone}`)
+            },
+            fun:function(){
+                console.log('hiii')
+            }
+        }
+        function createUser(x, y, z) {
+            var obj =  Object.create(all)
+            obj.Name = x
+            obj.Phone = y
+            obj.Address = z
+            
+            return obj
+        }
+
+        var arr = []
+        function save() {
+            x = document.getElementById("txtName").value
+            y = document.getElementById("txtPhone").value
+            z = document.getElementById("txtAddress").value
+            var obj = createUser(x, y, z)
+            arr.push(obj)
+            console.log(arr)
+        }
+
+
+    </script>
+</body>
+
+</html>

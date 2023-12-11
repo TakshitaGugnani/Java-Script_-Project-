@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="bdy">
+    <input type="text" id="txtSearch"> <br>
+    <button onclick="search()">Search</button> <br><br>
+    <button onclick="create()">create</button> <br><br>
+
+    <script>
+
+        function reset() {
+            arr = document.getElementsByTagName('div')
+            i = 0
+            while (i <= arr.length - 1) {
+                    arr[i].style.backgroundColor = "white"
+                    i = i + 1
+            }
+        }
+        function search() {
+            reset()
+            item = document.getElementById('txtSearch').value
+            arr = document.getElementsByTagName('div')
+            i = 0
+            while (i <= arr.length - 1) {
+                if (arr[i].innerHTML == item) {
+                    arr[i].style.backgroundColor = "red"
+                }
+                i = i + 1
+            }
+        }
+        function create() {
+            box = document.createElement('div')
+            box.style.height = "100px"
+            box.style.width = "100px"
+            box.style.margin = "10px"
+            box.style.float = "left"
+            box.style.textAlign = "center"
+            box.style.border = "1px solid black"
+
+            box.innerHTML = parseInt(Math.random() * 10)
+            document.getElementById('bdy').append(box)
+        }
+    </script>
+</body>
+
+</html>

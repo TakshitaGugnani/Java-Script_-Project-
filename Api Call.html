@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+
+<body>
+    <img id="image1" src="images/load.gif" alt="">
+    <table class="table table-bordered">
+        <thead>
+            <th>UserID</th>
+            <th>id</th>
+            <th>Title</th>
+            <th>Completed</th>
+        </thead>
+        <tbody id="bdy">
+
+        </tbody>
+    </table>
+
+    <script>
+        var request = new XMLHttpRequest() // Api call  class (object)
+        request.open("GET", "https://jsonplaceholder.typicode.com/photos")
+        request.send()
+
+        request.onload = function () {
+            document.getElementById('image1').style.display="none"
+            var arr = JSON.parse(request.response)
+            arr.forEach(function (obj) {
+                create(obj.albumId,obj.id,obj.title,obj.url)
+            })
+        }
+
+        function create(a, b, c, d) {
+            row = document.createElement('tr')
+
+            cell1 = document.createElement('td')
+            cell2 = document.createElement('td')
+            cell3 = document.createElement('td')
+            cell4 = document.createElement('td')
+
+            cell1.innerHTML = a
+            cell2.innerHTML = b
+            cell3.innerHTML = c
+
+            image=document.createElement('img')
+            image.src=d
+            image.style.height="30px"
+            cell4.append(image)
+
+            row.append(cell1)
+            row.append(cell2)
+            row.append(cell3)
+            row.append(cell4)
+            document.getElementById('bdy').append(row)
+
+        }
+
+    </script>
+</body>
+
+</html>

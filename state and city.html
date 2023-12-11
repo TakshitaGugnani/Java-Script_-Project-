@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select onchange="set()" id="sltState">
+        <option>Haryana</option>
+        <option>Rajsthan</option>
+        <option>Up</option>
+        <option>Punjab</option>
+    </select> <br> <br>
+
+    <select onchange="set()" id="sltCity">
+        <option>Rohtak</option>
+        <option>Jaipur</option>
+        <option>Mathura</option>
+        <option>Bhatinda</option>
+    </select> <br> <br>
+    <button onclick="set()">Generate</button> <br>
+    <h1 id="result"></h1>
+
+    <script>
+        function set() {
+            state = document.getElementById('sltState').value
+            city = document.getElementById('sltCity').value
+
+            str = "My State is=" + state + "And My city is=" + city
+            document.getElementById('result').innerHTML = str
+
+        }
+    </script>
+
+
+</body>
+
+</html>

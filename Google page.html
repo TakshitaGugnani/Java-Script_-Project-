@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300&family=Poppins&family=Roboto&display=swap"
+    rel="stylesheet">
+  <title>Google's input!</title>
+  <style>
+    * {
+      padding: 0%;
+      margin: 0%;
+    }
+
+    body {
+      height: 100vh;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      font-family: "zen  kaku gothic antique", sans-serif;
+    }
+    img{
+      height: 200px;
+      border-radius: 100px;
+    }
+
+    .container {
+      max-width: 22rem;
+      border: 1px solid black;
+      border-radius: 8px;
+      padding: 55px 50px 40px 50px;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .login{
+       margin-top: 20px;
+       margin-bottom: 5px;
+       font-weight: bolder;
+    }
+    .use{
+      font-weight: lighter;
+    }
+    .gInput{
+     height: 3.5rem;
+     width: 100%;
+     margin-top: 50px;
+     border: 2px solid lightgray;
+     border-radius: 5px;
+     font-size: 20px;
+     padding: 0 0 0 15px;
+     background: none;
+     outline: none;
+     box-sizing:border-box;
+    }
+    .ginput:focus{
+      border: 2px solid #4285f4;
+    }
+    .gInput:focus ~ .inputlabel:before
+    {
+      color: #285091;
+      font-size: 12px;
+      top: -65px;
+      z-index: 1;
+    }
+    .inputlabel{
+      position: relative;
+      width: 200px;
+    }
+    .inputlabel:before{
+    content: "Email on phone";
+    position: absolute;
+    top: -41px;
+    left: -65px;
+    background-color: white;
+    font-size: 18px;
+    z-index: -1;
+    font-weight: bold;
+    padding: 0 10px;
+    box-sizing: border-box;
+    transition: 0.1s ease;
+    }
+    .forgetContainer{
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 10px;
+    }
+    .guest{
+      margin-top: 35px;
+      margin-bottom: 35px;
+    }
+    .buttoncontainer{
+      width: 109%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    .buttoncontainer a{
+      text-decoration: none;
+      font-weight: bolder;
+      border-radius: 5px;
+      padding: 7px 15px 9px 15px;                                                                                        
+    }
+    .btncreate:hover{
+          color: #3574d8;
+          background-color:white;
+    }
+    .btnnext{
+      background-color: rgb(33, 33, 222);
+      color: white;
+    }
+    .btnnext:hover{
+      background-color: #1b66c9;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .forget,.guest span, .btnCreate{
+      color: #4285f4;
+    }
+    .guest,.inputlabel::before{
+      color:#5f6368;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="images1/images.html.webp" alt="">
+    <h2 class="login">Login</h2>
+    <h4 class="use">Use your Google Account</h4>
+    <input type="text" class="gInput">
+    <label class="inputlabel"></label>
+    <div class="forgetContainer">
+      <h5 class="forget">Forget Email?</h5>
+    </div>
+    <h4 class="guest">Not your computer? Use Guest mode to sign in privately. <span>Learn More</span></h4>
+    <div class="buttoncontainer">
+      <a href="" class="btncreate">Create account</a>
+      <a href="" class="btnnext">Next</a>
+    </div>
+  </div>
+</body>
+
+</html>
